@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -22,3 +22,42 @@ export const GlobalStyle = createGlobalStyle`
         font: 400 1rem 'Roboto', sans-serif;
     }
 `
+
+export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 1rem;
+`
+
+export const FormInput = styled.input`
+    background: ${props => props.theme.black};
+    color: ${props => props.theme.white};
+    border: 0;
+
+    padding: 1rem;
+    border-radius: 6px;
+
+    & + & {
+        margin-top: 1rem;
+    }
+`
+
+export const FormButton = styled.button`
+    background: ${props => props.theme["yellow-300"]};
+
+    padding: 1rem 0;
+    margin-top: 1rem;
+
+    border-radius: 6px;
+    border: 1px solid ${props => props.theme["yellow-300"]};
+    font-weight: bold;
+
+    transition: background 1s ease;
+
+    &:hover {
+        cursor: pointer;
+        background: ${props => props.theme["yellow-500"]};
+        border: 1px solid ${props => props.theme["yellow-500"]};
+    }
+`;
