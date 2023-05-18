@@ -65,12 +65,12 @@ export const FormButton = styled.button`
 export const Link = styled.a`
     font: 400 12px 'Roboto', sans-serif;
     color: ${props => props.theme["yellow-500"]};
-    text-decoration: underline;
-
+    
     margin-top: 1rem;
     margin-inline-end: auto;
 
     &:hover {
         cursor: pointer;
+        text-decoration: underline;
     }
 `
