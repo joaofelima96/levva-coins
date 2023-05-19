@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
     background: linear-gradient(to bottom, ${props => props.theme.black}, ${props => props.theme["gray-600"]});
-    padding: 2.5rem 0.75rem;
+    padding: 2.5rem 0 7.5rem;
 
     grid-column-start: 1;
     grid-column-end: 4;
