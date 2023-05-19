@@ -2,6 +2,8 @@ import { HeaderContainer, HeaderContent, NewCategoryButton, NewTransactionButton
 
 import levvaCoinsLogo from "../../assets/logo.svg"
 
+import FotoPerfil from "../../assets/perfil.png"
+
 export function Header() {
     return (
         <HeaderContainer>
@@ -14,7 +16,7 @@ export function Header() {
                 </div>
             </HeaderContent>
 
-            <UserAvatar />
+            <UserAvatar src={FotoPerfil} />
         </HeaderContainer>
     )
 }
