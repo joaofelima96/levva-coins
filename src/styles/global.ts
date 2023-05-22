@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import * as RadioGroup from "@radix-ui/react-radio-group";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -32,7 +33,7 @@ export const Form = styled.form`
 `
 
 export const FormInput = styled.input`
-    background: ${props => props.theme.black};
+    background: ${props => props.theme["gray-700"]};
     color: ${props => props.theme.white};
     border: 0;
 
@@ -77,3 +78,45 @@ export const Link = styled.a`
         text-decoration: underline;
     }
 `
+interface TransactionTypeButtonProps {
+    variant: "income" | "outcome";
+}
+
+export const TransactionTypeContainer = styled(RadioGroup.Root)`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+`;
+
+export const TransactionTypeButton = styled(RadioGroup.Item) <TransactionTypeButtonProps>`
+    cursor: pointer;
+    background: ${props => props.theme["gray-700"]};
+    color: ${props => props.theme["gray-300"]};
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.5rem;
+    border-radius: 6px;
+    border: 0;
+
+    svg {
+        color: ${props => props.variant === "income" ? props.theme["green-500"] : props.theme["red-500"]};
+    }
+
+    &[data-state='checked'] {
+        transition: background 0.5s;
+
+        color: ${props => props.theme.white};
+        background: ${props => props.variant === "income" ? props.theme["green-500"] : props.theme["red-500"]};
+        outline: ${props => props.variant === "income" ? props.theme["green-500"] : props.theme["red-500"]};
+
+        svg {
+            color: ${props => props.theme.white};
+        }
+    }
+`;

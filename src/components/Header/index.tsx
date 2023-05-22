@@ -5,7 +5,8 @@ import levvaCoinsLogo from "../../assets/logo.svg";
 import FotoPerfil from "../../assets/perfil.png"
 import { Modal } from "../Modal";
 import { HeaderContainer, HeaderContent, NewCategoryButton, NewTransactionButton, UserAvatar } from "./styles";
-import { Form, FormInput, FormButton } from "../../styles/global";
+import { Form, FormInput, FormButton, TransactionTypeContainer, TransactionTypeButton } from "../../styles/global";
+import { ArrowCircleDown, ArrowCircleUp } from "phosphor-react";
 
 export function Header() {
     const newCategoryButton: ReactNode = (<NewCategoryButton>Nova Categoria</NewCategoryButton>);
@@ -19,10 +20,30 @@ export function Header() {
 
                 <div>
                     <Modal title="Nova Categoria" trigger={newCategoryButton}>
-
+                        <Form>
+                            <FormInput type="name" value="Descrição" />
+                            <FormButton type="submit">Cadastrar</FormButton>
+                        </Form>
                     </Modal>
                     <Modal title="Nova Transação" trigger={newTransactionButton}>
+                        <Form>
+                            <FormInput type="text" placeholder="Descrição" required />
+                            <FormInput type="numer" placeholder="Preço" required />
+                            <FormInput type="text" placeholder="Categoria" required />
 
+                            <TransactionTypeContainer>
+                                <TransactionTypeButton value="income" variant="income">
+                                    <ArrowCircleUp size={24} />
+                                    Entrada
+                                </TransactionTypeButton>
+                                <TransactionTypeButton value="outcome" variant="outcome">
+                                    <ArrowCircleDown size={24} />
+                                    Saída
+                                </TransactionTypeButton>
+                            </TransactionTypeContainer>
+
+                            <FormButton type="submit">Cadastrar</FormButton>
+                        </Form>
                     </Modal>
                 </div>
                 <Modal title="Meu perfil" trigger={userAvatar}>

@@ -15,7 +15,7 @@ export const SearchFormContainer = styled.form`
         flex: 1;
         border-radius: 6px;
         border: 0;
-        background: ${(props) => props.theme.black};
+        background: ${(props) => props.theme["gray-700"]};
         color: ${(props) => props.theme["gray-300"]};
         padding: 1rem;
 
