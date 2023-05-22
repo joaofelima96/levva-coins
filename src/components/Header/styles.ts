@@ -70,18 +70,14 @@ interface UserAvatarProps {
 }
 
 export const UserAvatar = styled.img<UserAvatarProps>`
-    right: -6rem;
     width: 3.1rem;
     height: 100%;
-
+    
     border-radius: 50%;
     border: 2px solid transparent;
     box-shadow: 0px 0px 10px 10px #00000010;
-
-    @media only screen and (min-width: 1440px) {
-        position: absolute;
-        height: auto;
-    }
+    
+    
 
     transition: all 0.3s;
 
@@ -91,9 +87,14 @@ export const UserAvatar = styled.img<UserAvatarProps>`
         box-shadow: 0px 0px 10px 20px #00000015;
     }
 
-    ${(props => props.variant === "large" && css`
+    ${(props) => props.variant === "large" ? css`
         width: 8rem;
         height: 8rem;
         margin-bottom: 1rem;
-    `)}
+    `: css`
+        @media only screen and (min-width: 1440px) {
+            position: absolute;
+            height: auto;
+            right: -6rem;
+        `}
 `;
