@@ -111,7 +111,7 @@
       "responses": [
         {
           "uuid": "c41a99ba-60c8-430d-b7ee-f37a5eeb4a75",
-          "body": "{\r\n  \"id\": \"2d621e2e-8cd7-4ef2-bd8a-b572504e464b\",\r\n  \"email\": \"jhon.doe@levva.io\",\r\n  \"token\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8\",\r\n}",
+          "body": "{\r\n  \"id\": \"2d621e2e-8cd7-4ef2-bd8a-b572504e464b\",\r\n  \"name\": \"Jhon Doe\",\r\n  \"email\": \"jhon.doe@levva.io\",\r\n  \"token\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8\"\r\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "User authenticated",
@@ -209,6 +209,38 @@
               "target": "params",
               "modifier": "userId",
               "value": "2d621e2e-8cd7-4ef2-bd8a-b572504e464b",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2577c430-a53a-4774-867f-9652e1d9501f",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
               "invert": true,
               "operator": "equals"
             }
@@ -406,14 +438,14 @@
             {
               "target": "body",
               "modifier": "type",
-              "value": "deposit",
+              "value": "0",
               "invert": true,
               "operator": "equals"
             },
             {
               "target": "body",
               "modifier": "type",
-              "value": "credit",
+              "value": "1",
               "invert": true,
               "operator": "equals"
             }
@@ -468,7 +500,7 @@
       "responses": [
         {
           "uuid": "2c8b9434-ea3a-420f-9ac7-17eb8a1b0e8a",
-          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"id\": \"uuid-v4\",\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": {{toFixed (float 10 100) 2}},\n    \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n    \"categoryId\": \"{{guid}}\"\n  }\n{{/repeat}}\n]",
+          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"id\": \"uuid-v4\",\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": {{toFixed (float 10 100) 2}},\n    \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n    \"categoryId\": \n    {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department'}}\"\n    }\n  }\n{{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "List all transactions",
@@ -559,6 +591,18 @@
     {
       "key": "Content-Type",
       "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
     }
   ],
   "proxyReqHeaders": [
