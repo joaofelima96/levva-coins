@@ -4,7 +4,10 @@ import * as yup from "yup";
 
 import { AuthLayout } from "../../layouts/AuthLayout";
 import { Form, FormButton, FormError, FormInput, Link } from "../../styles/global";
-import Api from "../../clients/api/api";
+
+import LoginUseCase from "../../useCases/LoginUseCase/LoginUseCase";
+import { useStore } from "effector-react";
+import LoginStore from "../../stores/LoginStore/LoginStore";
 
 interface FormProps {
     email: string;
@@ -18,14 +21,14 @@ const formSchema = yup.object({
     .required();
 
 export function Login() {
+    const { isLoading, hasError, errorMessage } = useStore(LoginStore)
+
     const { register, handleSubmit, formState: { errors } } = useForm<FormProps>({
         resolver: yupResolver(formSchema)
     })
 
     function handleLogin({ email, password }: FormProps) {
-        console.log({ email, password });
-
-        Api.post
+        LoginUseCase.execute({ email, password });
     }
 
     return (
@@ -35,8 +38,11 @@ export function Login() {
                 {errors.email && <FormError>{errors.email.message}</FormError>}
                 <FormInput {...register("password")} type="password" placeholder="Senha" />
                 {errors.password && <FormError>{errors.password.message}</FormError>}
+
+                {hasError && <FormError>{errorMessage}</FormError>}
+
                 <Link>Não tem conta? Cadastre-se aqui.</Link>
-                <FormButton type="submit">Entrar</FormButton>
+                <FormButton type="submit">{isLoading ? "Carregando..." : "Entrar"}</FormButton>
             </Form>
         </AuthLayout>
     );
