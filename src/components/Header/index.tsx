@@ -4,14 +4,20 @@ import levvaCoinsLogo from "../../assets/logo.svg";
 
 import FotoPerfil from "../../assets/perfil.png"
 import { Modal } from "../Modal";
-import { HeaderContainer, HeaderContent, NewCategoryButton, NewTransactionButton, UserAvatar } from "./styles";
+import { HeaderContainer, HeaderContent, NewCategoryButton, NewTransactionButton, SignOutButton, UserAvatar } from "./styles";
 import { Form, FormInput, FormButton, TransactionTypeContainer, TransactionTypeButton } from "../../styles/global";
 import { ArrowCircleDown, ArrowCircleUp } from "phosphor-react";
+import { router } from "../../Router";
 
 export function Header() {
     const newCategoryButton: ReactNode = (<NewCategoryButton>Nova Categoria</NewCategoryButton>);
     const newTransactionButton: ReactNode = (<NewTransactionButton>Nova Transação</NewTransactionButton>);
     const userAvatar: ReactNode = (<UserAvatar src={FotoPerfil} />);
+
+    function handleSignOut() {
+        window.localStorage.removeItem("user");
+        router.navigate("/login");
+    }
 
     return (
         <HeaderContainer>
@@ -52,6 +58,9 @@ export function Header() {
                         <FormInput type="name" value="João Felipe" />
                         <FormInput type="email" placeholder="joao.lima@levva.io" disabled />
                         <FormButton type="submit">Atualizar</FormButton>
+                        <SignOutButton type="button" onClick={handleSignOut}>
+                            Sair
+                        </SignOutButton>
                     </Form>
                 </Modal>
             </HeaderContent>
