@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import * as RadioGroup from "@radix-ui/react-radio-group";
+import { Link } from "react-router-dom";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -71,9 +72,9 @@ export const FormButton = styled.button`
     }
 `;
 
-export const Link = styled.a`
+export const FormLink = styled(Link)`
     font: 400 12px 'Roboto', sans-serif;
-    color: ${props => props.theme["yellow-500"]};
+    color: ${(props) => props.theme["yellow-500"]};
     
     margin-top: 1rem;
     margin-inline-end: auto;
