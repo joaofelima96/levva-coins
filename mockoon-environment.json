@@ -240,7 +240,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiIyZDYyMWUyZS04Y2Q3LTRlZjItYmQ4YS1iNTcyNTA0ZTQ2NGIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.qo8S66VYYKLuIEei2BrZMdaGQRJBegzZ22yQxbU5c0M",
               "invert": true,
               "operator": "equals"
             }
@@ -263,7 +263,7 @@
       "responses": [
         {
           "uuid": "ebeab7fc-28d9-486b-a497-b36f7bd2594a",
-          "body": "{}",
+          "body": "",
           "latency": 0,
           "statusCode": 201,
           "label": "Category created",
@@ -325,7 +325,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiIyZDYyMWUyZS04Y2Q3LTRlZjItYmQ4YS1iNTcyNTA0ZTQ2NGIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.qo8S66VYYKLuIEei2BrZMdaGQRJBegzZ22yQxbU5c0M",
               "invert": true,
               "operator": "equals"
             }
@@ -385,7 +385,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiIyZDYyMWUyZS04Y2Q3LTRlZjItYmQ4YS1iNTcyNTA0ZTQ2NGIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.qo8S66VYYKLuIEei2BrZMdaGQRJBegzZ22yQxbU5c0M",
               "invert": true,
               "operator": "equals"
             }
@@ -477,7 +477,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiIyZDYyMWUyZS04Y2Q3LTRlZjItYmQ4YS1iNTcyNTA0ZTQ2NGIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.qo8S66VYYKLuIEei2BrZMdaGQRJBegzZ22yQxbU5c0M",
               "invert": true,
               "operator": "equals"
             }
@@ -537,7 +537,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiIyZDYyMWUyZS04Y2Q3LTRlZjItYmQ4YS1iNTcyNTA0ZTQ2NGIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.qo8S66VYYKLuIEei2BrZMdaGQRJBegzZ22yQxbU5c0M",
               "invert": true,
               "operator": "equals"
             }
