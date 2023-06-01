@@ -1,9 +1,26 @@
+import { useStore } from "effector-react";
+import { useEffect } from "react";
+
+import GetTransactionsUseCase from "../../useCases/GetTransactionsUseCase/GetTransactionsUseCase";
+import TransactionStore from "../../stores/TransactionStore/TransactionStore";
+
 import { Header } from "../../components/Header";
 import { SearchForm } from "../../components/SearchForm";
 import { Summary } from "../../components/Summary";
-import { HomeWrapper, PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
+import { HomeWrapper, PriceHighlight, TransactionsContainer, TransactionsTable, TransactionsTableEmpty } from "./styles";
 
 export function Home() {
+    const { isLoading, transactions } = useStore(TransactionStore);
+
+    const money = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+    });
+
+    useEffect(() => {
+        GetTransactionsUseCase.execute();
+    }, []);
+
     return (
         <HomeWrapper>
             <Header />
@@ -18,25 +35,24 @@ export function Home() {
                         <td>Data</td>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td width="50%">Desenvolvimento de site</td>
-                            <td>
-                                <PriceHighlight variant="income">R$ 12.000,00</PriceHighlight>
-                            </td>
-                            <td>Vendas</td>
-                            <td>13/04/2022</td>
-                        </tr>
-
-                        <tr>
-                            <td width="50%">Hambúrguer</td>
-                            <td>
-                                <PriceHighlight variant="outcome">R$ 59,00</PriceHighlight>
-                            </td>
-                            <td>Alimentação</td>
-                            <td>10/04/2022</td>
-                        </tr>
+                        {transactions.length > 0 && transactions.map((transaction) => (
+                            <tr key={transaction.id}>
+                                <td width="50%">{transaction.description}</td>
+                                <td>
+                                    <PriceHighlight variant={transaction.type === 0 ? "income" : "outcome"}>{money.format(transaction.amount)}
+                                    </PriceHighlight>
+                                </td>
+                                <td>{transaction.category.description}</td>
+                                <td>{transaction.createdAt}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </TransactionsTable>
+                {!isLoading && transactions.length === 0 && (
+                    <TransactionsTableEmpty>
+                        Adicione uma categoria e a sua primeira transação :)
+                    </TransactionsTableEmpty>
+                )}
             </TransactionsContainer>
         </HomeWrapper>
     )
