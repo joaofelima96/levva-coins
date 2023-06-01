@@ -4,14 +4,13 @@ import levvaCoinsLogo from "../../assets/logo.svg";
 
 import FotoPerfil from "../../assets/perfil.png"
 import { Modal } from "../Modal";
-import { HeaderContainer, HeaderContent, NewTransactionButton, SignOutButton, UserAvatar } from "./styles";
-import { Form, FormInput, FormButton, TransactionTypeContainer, TransactionTypeButton } from "../../styles/global";
-import { ArrowCircleDown, ArrowCircleUp } from "phosphor-react";
+import { HeaderContainer, HeaderContent, SignOutButton, UserAvatar } from "./styles";
+import { Form, FormInput, FormButton } from "../../styles/global";
 import { router } from "../../Router";
 import { CategoryModal } from "./CategoryModal";
+import { TransactionModal } from "./TransactionModal";
 
 export function Header() {
-    const newTransactionButton: ReactNode = (<NewTransactionButton>Nova Transação</NewTransactionButton>);
     const userAvatar: ReactNode = (<UserAvatar src={FotoPerfil} />);
 
     function handleSignOut() {
@@ -26,26 +25,7 @@ export function Header() {
 
                 <div>
                     <CategoryModal />
-                    <Modal title="Nova Transação" trigger={newTransactionButton}>
-                        <Form>
-                            <FormInput type="text" placeholder="Descrição" required />
-                            <FormInput type="numer" placeholder="Preço" required />
-                            <FormInput type="text" placeholder="Categoria" required />
-
-                            <TransactionTypeContainer>
-                                <TransactionTypeButton value="income" variant="income">
-                                    <ArrowCircleUp size={24} />
-                                    Entrada
-                                </TransactionTypeButton>
-                                <TransactionTypeButton value="outcome" variant="outcome">
-                                    <ArrowCircleDown size={24} />
-                                    Saída
-                                </TransactionTypeButton>
-                            </TransactionTypeContainer>
-
-                            <FormButton type="submit">Cadastrar</FormButton>
-                        </Form>
-                    </Modal>
+                    <TransactionModal />
                 </div>
                 <Modal title="Meu perfil" trigger={userAvatar}>
                     <Form>
