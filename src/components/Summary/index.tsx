@@ -3,6 +3,7 @@ import { useStore } from "effector-react";
 import TransactionStore from "../../stores/TransactionStore/TransactionStore";
 
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
+
 import { SummaryCard, SummaryContainer } from "./styles";
 import { DefaultTheme } from "../../styles/defaultTheme";
 
@@ -11,12 +12,12 @@ export function Summary() {
 
     const summary = transactions.reduce(
         (acc, transaction) => {
-            if (transaction.type === 1) {
-                acc.withdraws += transaction.amount;
-                acc.total -= transaction.amount;
-            } else {
+            if (transaction.type === 0) {
                 acc.deposits += transaction.amount;
                 acc.total += transaction.amount;
+            } else {
+                acc.withdraws += transaction.amount;
+                acc.total -= transaction.amount;
             }
 
             return acc;
@@ -43,6 +44,7 @@ export function Summary() {
 
                 <strong>{money.format(summary.deposits)}</strong>
             </SummaryCard>
+
             <SummaryCard>
                 <header>
                     <span>Saídas</span>
@@ -51,6 +53,7 @@ export function Summary() {
 
                 <strong>{money.format(summary.withdraws)}</strong>
             </SummaryCard>
+
             <SummaryCard variant="balance">
                 <header>
                     <span>Total</span>
@@ -60,5 +63,5 @@ export function Summary() {
                 <strong>{money.format(summary.total)}</strong>
             </SummaryCard>
         </SummaryContainer>
-    )
+    );
 }
