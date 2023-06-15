@@ -43,7 +43,20 @@ const getTransactions = async (): Promise<TransactionValues[]> => {
         });
 };
 
+const searchTransaction = async (text: string): Promise<TransactionValues[]> => {
+    return Api.get({
+        url: `/transaction/${text}`,
+    })
+        .then((response) => {
+            return response.data;
+        })
+        .catch((err: AxiosError<RequestError>) => {
+            throw err.response?.data;
+        });
+};
+
 export const TransactionService = {
     createTransaction,
     getTransactions,
+    searchTransaction
 };

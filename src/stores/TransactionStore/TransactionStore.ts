@@ -5,6 +5,7 @@ import {
     loadCreateTransactionDone,
     loadTransactionDone,
     loadTransactionFail,
+    searchTransactionDone,
 } from "./TransactionEvents";
 import { TransactionState } from "./TransactionState";
 
@@ -39,6 +40,12 @@ const TransactionStore = createStore<TransactionState>(initialState)
         hasError: data.hasError,
         errorMessage: data.message,
         isLoading: false,
+    }))
+    .on(searchTransactionDone, (_, data) => ({
+        isLoading: false,
+        transactions: data,
+        hasError: false,
+        errorMessage: "",
     }));
 
 export default TransactionStore;

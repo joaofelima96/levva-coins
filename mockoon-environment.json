@@ -550,6 +550,91 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "5f046f61-bfd0-41b1-b7c5-9e244ccbc98b",
+      "type": "http",
+      "documentation": "List only searched transactions",
+      "method": "get",
+      "endpoint": "transaction/:text",
+      "responses": [
+        {
+          "uuid": "63786751-0831-45ad-931a-bb5de767943c",
+          "body": "[\n  {\n    \"id\": \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.productName'}}\",\n\t  \"amount\": {{toFixed (float 10 100) 2}},\n\t  \"type\": {{oneOf (array 0 1)}},\n\t  \"category\": \n\t  {\n\t    \"id\":\"{{guid}}\",\n\t    \"description\":\"{{faker 'commerce.department'}}\"\n\t  },\n\t  \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List only searched transactions",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "aa76b29c-5400-41d7-ac02-360e1c195e54",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Essa transação não existe.\"\r\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Transaction doesn't exist",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "text",
+              "value": "Mercado",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e109eb80-5348-4ee1-99ec-a94cb9689307",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Usuário não autenticado.\"\r\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "User unauthorized",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiIyZDYyMWUyZS04Y2Q3LTRlZjItYmQ4YS1iNTcyNTA0ZTQ2NGIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.qo8S66VYYKLuIEei2BrZMdaGQRJBegzZ22yQxbU5c0M",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -572,6 +657,10 @@
     {
       "type": "route",
       "uuid": "36544e5d-8010-4fe8-926a-87a93e88de8f"
+    },
+    {
+      "type": "route",
+      "uuid": "5f046f61-bfd0-41b1-b7c5-9e244ccbc98b"
     }
   ],
   "proxyMode": false,

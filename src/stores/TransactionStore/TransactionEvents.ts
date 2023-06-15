@@ -13,3 +13,5 @@ export const loadTransactionDone = createEvent<TransactionValues[]>(
 export const loadTransactionFail = createEvent<RequestError>(
     "loadTransactionFail"
 );
+
+export const searchTransactionDone = createEvent<TransactionValues[]>("searchTransactionDone");

@@ -1,12 +1,23 @@
+import { RequestError } from "../../domain/request";
 import { SearchParams } from "../../domain/search";
+import { TransactionValues } from "../../domain/transaction";
+import { TransactionService } from "../../services/TransactionService/TransactionService";
 
-import { updateSearch } from "../../stores/SearchStore/SearchEvents"
+import { searchTransactionDone, loadTransaction, loadTransactionFail } from "../../stores/TransactionStore/TransactionEvents"
 
 const execute = ({
     search,
-}: SearchParams): void => {
+}: SearchParams): Promise<void> => {
 
-    updateSearch(search)
+    loadTransaction()
+
+    return TransactionService.searchTransaction(search)
+        .then((transactions: TransactionValues[]) => {
+            searchTransactionDone(transactions);
+        })
+        .catch(({ hasError, message }: RequestError) => {
+            loadTransactionFail({ hasError, message });
+        });
 
 };
 
