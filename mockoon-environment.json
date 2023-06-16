@@ -263,7 +263,7 @@
       "responses": [
         {
           "uuid": "ebeab7fc-28d9-486b-a497-b36f7bd2594a",
-          "body": "{\n  \"id\": \"{{guid}}\"\n}",
+          "body": "{\n  \"id\": \"{{guid}}\",\n  \"description\": \"{{faker 'commerce.department'}}\"\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "Category created",
@@ -344,7 +344,7 @@
       "type": "http",
       "documentation": "List all categories",
       "method": "get",
-      "endpoint": "category",
+      "endpoint": "category/list",
       "responses": [
         {
           "uuid": "ea5a4a8f-3e3e-421a-a571-52cc0dd26dfd",

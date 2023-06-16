@@ -7,7 +7,7 @@ import { RequestError } from "../../domain/request";
 
 const createCategory = async ({
     description,
-}: NewCategoryParams): Promise<void> => {
+}: NewCategoryParams): Promise<CategoryValues> => {
     return Api.post({
         url: "/category",
         body: {
@@ -24,7 +24,7 @@ const createCategory = async ({
 
 const getCategories = async (): Promise<CategoryValues[]> => {
     return Api.get({
-        url: "/category",
+        url: "/category/list",
     })
         .then((response) => {
             return response.data
