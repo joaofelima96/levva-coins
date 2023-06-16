@@ -9,7 +9,7 @@ const createCategory = async ({
     description,
 }: NewCategoryParams): Promise<CategoryValues> => {
     return Api.post({
-        url: "/category",
+        url: "/Category/Create",
         body: {
             description,
         },
@@ -24,7 +24,7 @@ const createCategory = async ({
 
 const getCategories = async (): Promise<CategoryValues[]> => {
     return Api.get({
-        url: "/category/list",
+        url: "/Category/list",
     })
         .then((response) => {
             return response.data
