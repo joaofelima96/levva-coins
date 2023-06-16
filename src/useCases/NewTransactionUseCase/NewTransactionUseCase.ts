@@ -6,7 +6,7 @@ import {
     loadTransactionFail,
 } from "../../stores/TransactionStore/TransactionEvents";
 
-import { NewTransactionParams } from "../../domain/transaction";
+import { NewTransactionParams, TransactionValues } from "../../domain/transaction";
 import { RequestError } from "../../domain/request";
 
 const execute = async ({
@@ -24,8 +24,8 @@ const execute = async ({
         type,
         categoryId,
     })
-        .then(() => {
-            loadCreateTransactionDone();
+        .then(({ id, category, createdAt }: TransactionValues) => {
+            loadCreateTransactionDone({ id, description, amount, type, category, createdAt, });
         })
         .catch(({ hasError, message }: RequestError) => {
             loadTransactionFail({ hasError, message });

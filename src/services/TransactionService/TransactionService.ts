@@ -13,7 +13,7 @@ const createTransaction = async ({
     amount,
     type,
     categoryId,
-}: NewTransactionParams): Promise<void> => {
+}: NewTransactionParams): Promise<TransactionValues> => {
     return Api.post({
         url: "/transaction",
         body: {

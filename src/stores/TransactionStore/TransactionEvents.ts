@@ -4,7 +4,7 @@ import { RequestError } from "../../domain/request";
 import { TransactionValues } from "../../domain/transaction";
 
 export const loadTransaction = createEvent("loadTransaction");
-export const loadCreateTransactionDone = createEvent(
+export const loadCreateTransactionDone = createEvent<TransactionValues>(
     "loadCreateTransactionDone"
 );
 export const loadTransactionDone = createEvent<TransactionValues[]>(

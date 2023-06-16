@@ -263,7 +263,7 @@
       "responses": [
         {
           "uuid": "ebeab7fc-28d9-486b-a497-b36f7bd2594a",
-          "body": "{\n  \"id\": \"{{guid}}\",\n  \"description\": \"{{faker 'commerce.department'}}\"\n}",
+          "body": "{\n  \"id\": \"{{guid}}\",\n  \"description\": \"{{body 'description'}}\"\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "Category created",
@@ -408,7 +408,7 @@
       "responses": [
         {
           "uuid": "f50c305c-b7a0-4583-8c7c-c0eb45903297",
-          "body": "{\n  \"id\": \"{{guid}}\",\n  \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n}",
+          "body": "{\r\n  \"id\": \"{{guid}}\",\r\n  \"category\": {\r\n    \"id\": \"{{body 'categoryId'}}\",\r\n    \"description\": \"Food\"\r\n  },\r\n  \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\r\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "Transaction created",
@@ -579,7 +579,7 @@
           "uuid": "aa76b29c-5400-41d7-ac02-360e1c195e54",
           "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Essa transação não existe.\"\r\n}",
           "latency": 0,
-          "statusCode": 400,
+          "statusCode": 200,
           "label": "Transaction doesn't exist",
           "headers": [],
           "bodyType": "INLINE",
